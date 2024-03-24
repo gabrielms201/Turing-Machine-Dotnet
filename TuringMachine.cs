@@ -36,14 +36,13 @@
         {
             Tape = new(input: input);
 
-
             while (!AcceptStates.Contains(CurrentState))
             {
                 var transitions = Transitions.GetTransitionsForState(CurrentState);
                 var currentSymbol = Tape.GetCurrentSymbol();
 
                 // TODO: tentar melhorar issae
-                // Mudar estratura de dados para ser mais resposiva e lidar melhor com chaves, e mantendo assim a legibilidade do código
+                // Mudar estrutura de dados para ser mais resposiva e lidar melhor com chaves, e mantendo assim a legibilidade do código
                 var transition =
                     transitions.Where(x => x.Write.Equals(currentSymbol)).SingleOrDefault();
 
