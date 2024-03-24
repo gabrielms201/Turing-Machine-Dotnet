@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace TuringMachine
 {
     public class Tape
     {
-        public static Tape Empty => new (Constants.Empty);
-
+        public static Tape Empty => new(Constants.Empty);
         public string Input { get; init; }
-
         public string Output => OutputBuilder.ToString();
-
         private readonly StringBuilder OutputBuilder;
         public int Position { get; private set; } = 0;
 

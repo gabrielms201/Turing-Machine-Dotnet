@@ -1,5 +1,4 @@
-﻿using System.Runtime.ConstrainedExecution;
-using static TuringMachine.Constants;
+﻿using static TuringMachine.Constants;
 
 namespace TuringMachine
 {

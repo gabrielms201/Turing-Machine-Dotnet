@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TuringMachine
+﻿namespace TuringMachine
 {
     public class TuringMachine
     {
@@ -42,7 +35,7 @@ namespace TuringMachine
         private (string output, bool accepts) Execute(string input)
         {
             Tape = new(input: input);
-        
+
 
             while (!AcceptStates.Contains(CurrentState))
             {
@@ -52,7 +45,7 @@ namespace TuringMachine
                 // TODO: tentar melhorar issae
                 // Mudar estratura de dados para ser mais resposiva e lidar melhor com chaves, e mantendo assim a legibilidade do código
                 var transition =
-                    transitions.Where(x => x.Write.Equals(currentSymbol)).SingleOrDefault(); 
+                    transitions.Where(x => x.Write.Equals(currentSymbol)).SingleOrDefault();
 
                 if (transition is null)
                     return Reject();
@@ -63,10 +56,8 @@ namespace TuringMachine
 
             return Accept();
         }
-
         private (string Output, bool) Reject() => (Tape.Output, false);
         private (string Output, bool) Accept() => (Tape.Output, true);
-
         public override string ToString()
             =>
                 $"States : {string.Join(",", States)}" + Environment.NewLine +

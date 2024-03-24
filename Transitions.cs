@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Sources;
+﻿using System.ComponentModel;
 
 namespace TuringMachine
 {
@@ -23,6 +16,8 @@ namespace TuringMachine
     }
     public class Transitions
     {
+        public Dictionary<int, HashSet<Transition>> TransitionsData { get; } = new();
+
         public Transitions(Dictionary<int, HashSet<Transition>> transitionsData)
         {
             TransitionsData = transitionsData;
@@ -30,8 +25,7 @@ namespace TuringMachine
         public Transitions()
         {
         }
-        public Dictionary<int, HashSet<Transition>> TransitionsData { get; } = new();
-        public HashSet<Transition> GetTransitionsForState(int state) => TransitionsData.GetValueOrDefault(state) 
+        public HashSet<Transition> GetTransitionsForState(int state) => TransitionsData.GetValueOrDefault(state)
             ?? throw new Exception("State not defined for transition");
         public void AddTransition(int state,
                                   string read,
@@ -60,7 +54,6 @@ namespace TuringMachine
             }
             TransitionsData.Add(state, new HashSet<Transition>() { new Transition(read, write, directionASEnum, nextState) });
         }
-
         private Direction GetDirectionAsEnum(string direction) => direction switch
         {
             "R" => Direction.Right,
@@ -68,8 +61,7 @@ namespace TuringMachine
             "S" => Direction.Stand,
             _ => throw new InvalidEnumArgumentException(nameof(direction))
         };
-
-    public override string ToString()
+        public override string ToString()
         {
             var content = "\n\t";
             foreach (var item in TransitionsData)
