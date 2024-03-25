@@ -41,10 +41,8 @@
                 var transitions = Transitions.GetTransitionsForState(CurrentState);
                 var currentSymbol = Tape.GetCurrentSymbol();
 
-                // TODO: tentar melhorar issae
-                // Mudar estrutura de dados para ser mais resposiva e lidar melhor com chaves, e mantendo assim a legibilidade do código
                 var transition =
-                    transitions.Where(x => x.Write.Equals(currentSymbol)).SingleOrDefault();
+                    transitions.SingleOrDefault(x => x.Write.Equals(currentSymbol));
 
                 if (transition is null)
                     return Reject();

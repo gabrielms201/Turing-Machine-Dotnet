@@ -6,13 +6,10 @@ namespace TuringMachine
     {
         Left, Right, Stand
     }
-    public record Transition(string Read, string Write, Direction Direction, int NextState)
+    public record Transition(string Read, string Write, Direction Direction, int NextState) : IEquatable<Transition>
     {
         public override string ToString() => $"[{Read};{Write},{Direction}]";
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Read);
-        }
+
     }
     public class Transitions
     {
